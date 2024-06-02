@@ -12,7 +12,7 @@ local function fireEvent()
     end
 end
 
-local function onMouseClick()
+local function onTap()
     isFiring = not isFiring
     if isFiring then
         fireEvent()
@@ -20,14 +20,13 @@ local function onMouseClick()
 end
 
 userInputService.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        onMouseClick()
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then -- Check for left mouse button click
+        onTap()
     end
 end)
 
 userInputService.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then -- Check for left mouse button release
         isFiring = false
     end
 end)
- 
